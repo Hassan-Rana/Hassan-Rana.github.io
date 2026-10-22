@@ -1,0 +1,11 @@
+# Netlify configuration — picked up automatically when you deploy from Git.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Note: Netlify sets the URL variable automatically, which is used for the
+# sitemap and social-preview tags. To use a custom domain instead, set SITE_URL
+# in Site settings → Environment variables (e.g. https://hassanrana.com).

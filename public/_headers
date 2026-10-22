@@ -1,0 +1,10 @@
+# Security and caching headers — understood by both Netlify and Cloudflare Pages.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Files in /assets have content hashes in their names, so they can be cached for a long time.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

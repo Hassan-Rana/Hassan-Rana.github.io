@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — change colours and fonts here.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Instrument Serif', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Graphite surfaces */
+  --color-ink-950: #0d0f10;
+  --color-ink-900: #121516;
+  --color-ink-850: #171a1c;
+  --color-ink-800: #1d2123;
+  --color-ink-700: #2a2f32;
+  --color-ink-600: #3a4044;
+
+  /* Off-white type */
+  --color-paper: #ece9e1;
+  --color-paper-muted: #b2b5b0;
+  --color-paper-faint: #8a8f8b;
+
+  /* Restrained lime accent */
+  --color-lime: #c5f04a;
+  --color-lime-soft: #d9f78a;
+  --color-lime-deep: #8fb52a;
+
+  /* Status */
+  --color-amber: #e9c46a;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+@layer base {
+  html {
+    background-color: var(--color-ink-950);
+    color: var(--color-paper);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-ink-950);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink-950);
+  }
+
+  /* Leave room for the fixed navbar when jumping to a section */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Clear, consistent keyboard focus */
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Reusable decorative patterns
+   ------------------------------------------------------------------ */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(236 233 225 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(236 233 225 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility mask-fade-radial {
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, black 30%, transparent 100%);
+}
+
+@utility mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+
+/* Scroll-in reveal (see components/ui/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal[data-shown='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated route on the hero network graphic */
+.route-path {
+  stroke-dasharray: 6 10;
+  animation: route-flow 2.4s linear infinite;
+}
+@keyframes route-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+.node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pulse 3.2s ease-in-out infinite;
+}
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.6);
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .route-path,
+  .node-pulse {
+    animation: none;
+  }
+}
