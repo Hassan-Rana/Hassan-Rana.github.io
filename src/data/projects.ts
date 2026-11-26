@@ -15,6 +15,23 @@ import type { Project } from './types';
  */
 export const projects: Project[] = [
   {
+    slug: 'flat-watch-debrecen',
+    title: 'Flat-Watch Debrecen — Rental Matching Platform',
+    period: 'Fall 2026',
+    status: 'ongoing',
+    summary:
+      'A team project started at an agentic AI hackathon: a platform that matches tenants in Debrecen with apartments, private rooms and bed spaces, and explains why each place fits.',
+    problem:
+      'Students and newcomers in Debrecen search through scattered rental ads, lose time on places that don’t fit and risk rental scams. Landlords get many unsuitable enquiries.',
+    methodology:
+      'Built an agent pipeline that reads listing text, works out the real monthly cost and the commute to campus, flags scam signs and gives each listing an explained match score, with saved-search alerts and in-app chat between tenants and landlords.',
+    technologies: ['Python', 'Streamlit', 'Agentic AI', 'OpenStreetMap', 'SQLite'],
+    outcomes: [
+      { text: 'Working prototype with tenant, landlord and moderator roles and 50 automated tests.', verified: true },
+    ],
+    links: [{ label: 'Source code on GitHub', href: 'https://github.com/Pelusharaz/Flat_watch' }],
+  },
+  {
     slug: 'nlp-multi-agent-synthesizer',
     title: 'NLP Multi-Agent Synthesizer & Reviewer',
     period: 'Spring 2026',
