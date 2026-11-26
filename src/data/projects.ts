@@ -18,7 +18,7 @@ export const projects: Project[] = [
     slug: 'flat-watch-debrecen',
     title: 'Flat-Watch Debrecen — Rental Matching Platform',
     period: 'Fall 2026',
-    status: 'ongoing',
+    status: 'completed',
     summary:
       'A team project started at an agentic AI hackathon: a platform that matches tenants in Debrecen with apartments, private rooms and bed spaces, and explains why each place fits.',
     problem:
