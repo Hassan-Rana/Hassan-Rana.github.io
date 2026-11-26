@@ -68,7 +68,14 @@ export const projects: Project[] = [
       'Combined more than three years of daily PM2.5, PM10 and other pollutant data with weather and a festival and season calendar, then trained gradient-boosted models to forecast PM2.5 and PM10 and convert them to the national AQI scale. Tested on a held-out final year against persistence and a version without the event features.',
     technologies: ['Python', 'scikit-learn', 'Time-series forecasting', 'Feature engineering', 'Open-Meteo API', 'Streamlit'],
     outcomes: [
-      { text: 'Model accuracy and key findings — to be added.', verified: false },
+      {
+        text: 'On a held-out year (Nov 2025 – Nov 2026), next-day AQI was off by 21.7 points on average and in the right AQI category on 73% of days. Error was 8% lower than a "same as today" forecast at 1 day ahead and 20% lower at 3 days ahead.',
+        verified: true,
+      },
+      {
+        text: 'Finding: with the modelled (satellite-based) data used here, the festival and event features did not improve accuracy, because that data smooths out one-night spikes such as Diwali fireworks. Ground-station data would be needed to capture them.',
+        verified: true,
+      },
     ],
     links: [
       { label: 'Source code on GitHub', href: 'https://github.com/Hassan-Rana/aqi-forecast-south-asia' },
