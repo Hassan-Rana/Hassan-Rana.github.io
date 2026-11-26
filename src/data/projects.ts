@@ -38,12 +38,12 @@ export const projects: Project[] = [
     status: 'completed',
     featured: true,
     summary:
-      'A multi-agent NLP pipeline built on Llama 3.1 (8B), where specialised agents analyse text, check each other’s work and refine the result.',
+      'A multi-agent NLP pipeline on Llama 3.1 (8B), where specialised agents analyse a text, judge its tone, write a report and check each other’s work.',
     problem:
-      'A single prompt to a language model can miss details or produce unchecked claims. The question was whether splitting the work across specialised, cross-checking agents gives better results than one prompt.',
+      'A single prompt to a language model can miss details, make unchecked claims or misread the tone of a text. The question was whether splitting the work across specialised, cross-checking agents gives better results than one prompt.',
     methodology:
-      'Designed specialised agents for text analysis, added cross-agent validation and an iterative refinement loop, then benchmarked the pipeline against a single-prompt baseline.',
-    technologies: ['Python', 'Llama 3.1 (8B)', 'Multi-agent pipeline', 'LLM evaluation'],
+      'Built Analyst, Tone, Synthesizer and Reviewer agents running on Llama 3.1 (8B) through Ollama. The Tone agent judges sentiment, formality, politeness, confidence and emotions, and an independent rule-based tone checker cross-validates it. The Reviewer sends drafts back until they are faithful to the source, and the pipeline is benchmarked against a single-prompt baseline on a labelled set of texts.',
+    technologies: ['Python', 'Llama 3.1 (8B)', 'Ollama', 'Multi-agent pipeline', 'Tone analysis', 'Streamlit'],
     outcomes: [
       {
         text: 'Benchmark comparison against the single-prompt baseline — results to be added.',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
       },
     ],
     links: [
-      { label: 'Source code on GitHub', href: null },
+      { label: 'Source code on GitHub', href: 'https://github.com/Hassan-Rana/nlp-multi-agent-reviewer' },
       { label: 'Project report', href: null },
     ],
   },
@@ -61,16 +61,19 @@ export const projects: Project[] = [
     period: 'Fall 2025',
     status: 'completed',
     summary:
-      'Data mining on pollutant and meteorological data to find pollution patterns and predict Air Quality Index (AQI) categories, built in RapidMiner.',
+      'Predicts the Air Quality Index for today and the next two days in six cities of the Indian subcontinent from historical and current data, taking into account festivals, events and seasons that add to pollution.',
     problem:
-      'Air-quality data is noisy and spread across many pollutant and weather variables. The aim was to uncover pollution patterns and predict AQI categories from them.',
+      'Air quality in South Asian cities swings sharply around occasions such as Diwali, New Year and Shab-e-Barat fireworks, Lohri bonfires and the crop-burning and winter smog seasons. The aim was to predict AQI from past and current pollution data while accounting for these events.',
     methodology:
-      'Pre-processed the data, applied feature selection, used clustering to find pollution patterns, and trained classification models to predict AQI categories.',
-    technologies: ['RapidMiner', 'Feature selection', 'Clustering', 'Classification'],
+      'Combined more than three years of daily PM2.5, PM10 and other pollutant data with weather and a festival and season calendar, then trained gradient-boosted models to forecast PM2.5 and PM10 and convert them to the national AQI scale. Tested on a held-out final year against persistence and a version without the event features.',
+    technologies: ['Python', 'scikit-learn', 'Time-series forecasting', 'Feature engineering', 'Open-Meteo API', 'Streamlit'],
     outcomes: [
       { text: 'Model accuracy and key findings — to be added.', verified: false },
     ],
-    links: [{ label: 'Project report', href: null }],
+    links: [
+      { label: 'Source code on GitHub', href: 'https://github.com/Hassan-Rana/aqi-forecast-south-asia' },
+      { label: 'Project report', href: null },
+    ],
   },
   /*{
     slug: 'bokeh-air-quality-dashboard',
